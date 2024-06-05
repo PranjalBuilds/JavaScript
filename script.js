@@ -1,57 +1,108 @@
-// conditionals
-// age range
-// if the age is less than 12 => can not participate
-// if the age is between 12 to 16 => under 16 comp.
-// if the age is between 17 to 20 => can participate in senior level
-// else age is greater than 20 can not participate
-
-let age = 19;
-
-// if(age<12){
-//     console.log('can not participate')
-// }
-// // && only executes when both the conditions are correct
-// else if(age >= 12 && age <= 16){
-//     console.log('under 16')
-// }
-// else if(age >=17 && age <=20){
-//     console.log('senior level')
-// }
-// else{
-//     console.log('can not participate')
-// }
-
-// ternary operator
-// condition ?(true) {true} :(else) {false}
-// age>= 18 ? console.log('eligible to vote') : console.log('not eligible to vote');
-
-
-
-// functions is a reusable code to perform same task when we want
-
-// function grinder(items){
-//     console.log('grinding...', items)
-// }
-
-// grinder('tomatoes');
-// grinder('onions')
-
-
-// function add(a, b){
-
-//     return a+b;
-// }
-
-// let sum1 = add(2,3)
-// let sum2 = add(12,45)
-
-// console.log(sum1, sum2)
-
-
-function joined(){
+function joined() {
     let title = document.getElementById('title');
-    title.innerText = 'Thanks for joining the bootcamp live!'
-    let btn = document.getElementById('btn');
-    // btn.style.display = 'none'
-    btn.style.backgroundColor = 'blueviolet'
+    title.innerText = 'Thanks for joining  the bootcamp!!'
 }
+
+function convert() {
+    let m = document.getElementById('meterInput');
+    let cm = m.value * 100;
+    let finalResult = m.value + " M is " + cm + " CM"
+    let result = document.getElementById('result');
+    result.innerText = finalResult;
+    // make input field blank
+    m.value = ''
+}
+
+function split() {
+    let amount = document.getElementById('amount');
+    let persons = document.getElementById('persons');
+
+
+    let bill = (amount.value / persons.value).toFixed(0);
+    document.getElementById('result').innerText = bill
+}
+
+let users = []
+
+function notifyUserAdded(){
+    let alert = document.getElementById('alert-success');
+    alert.classList.remove('alert');
+    alert.classList.add('alert-success')
+
+    setTimeout(() => {
+            alert.classList.remove('alert-success');
+            alert.classList.add('alert');
+    }, 2000);
+
+}
+
+
+function notifyUserExist(){
+    let alert = document.getElementById('alert-danger')
+    alert.classList.remove('alert');
+    alert.classList.add('alert-danger')
+
+    setTimeout(() => {
+        alert.classList.remove('alert-danger')
+        alert.classList.add('alert');
+    }, 2000);
+
+    // 2000 is milliseconds
+}
+
+
+function addUser(userInput){
+    let checkUser = users.filter((user)=>{
+        return user.email == userInput.email;
+    })
+    if(checkUser.length == 0){
+        users.push(userInput)
+        notifyUserAdded();
+    }
+    else{
+        notifyUserExist();
+    }
+
+}
+
+
+
+function displayUsers() {
+    let usersContainer = document.getElementById('users');
+    usersContainer.innerHTML = " "
+    users.map((a) => {
+        let userDiv = document.createElement('div');
+        userDiv.classList.add('user')
+        let nameElement = document.createElement('p');
+        nameElement.innerText = a.name;
+        let emailElement = document.createElement('p');
+        emailElement.innerText = a.email;
+
+        usersContainer.appendChild(userDiv);
+        userDiv.appendChild(nameElement)
+        userDiv.appendChild(emailElement)
+    })
+
+
+
+}
+
+
+
+function add() {
+    let name = document.getElementById('name');
+    let email = document.getElementById('email');
+
+    let user = {
+        name: name.value,
+        email: email.value,
+    }
+
+    addUser(user)
+    displayUsers();
+
+    console.log(users)
+}
+
+let demo = document.getElementById('demo');
+demo.innerHTML = '<h1>this is demo of innerText</h1>'
