@@ -1,57 +1,62 @@
-// array
-let arr = ['milk', 'bread', 'butter']
-// console.log(arr)
-// arr[1] = 'brown bread';
-// to add a value in the end => push()
-// to delete a value from end =>pop()
-// arr.push('cheese')
-// arr.pop();
+// primitive and reference
+// data types primitive and reference
+// primitive => string, number, boolean 
+// reference => [] {}
+
+// let a =true;
+// let b = a;
+// b = 7;
+
+// // let a = [1,2,3]
+// // let b = a;
+// // b.pop()
+
+// console.log(a, b)
+
+// let  a = 5;
+// let b = a;
+// b =10;
+
+// console.log(a,b)
 
 
-// splice => splice(start number, deleteCount(how many items you want to delete))
-// arr.splice(0, 3, 'coffee', 'apple')
-// console.log(arr);
+
+// let a = [1,2,3]
+// let b = a;
+// b.push(4)
+
+// console.log(a,b)
 
 
-// objects
-let user = {
-    name: 'ashish',
-    email: 'ashish@gmail.com',
-    address: 'new delhi'
+
+// conditionals
+// anything that is true or false or converted to true or false weca n write that inside condition
+// if(""){
+//     console.log('party 🥳')
+// }
+// else{
+//     console.log('movie 🍿')
+// }
+
+// thruthy and falsy
+// falsy => 0 -0 "" '' NaN undefined null
+// truthy => execute as true condition
+let x = 24;
+console.log(typeof x)
+
+
+
+let name = prompt("Enter the name");
+let age = prompt("Enter the age");
+if(typeof age == "number"){
+if(age > 18){
+    console.log(name + ' is eligibe to vote!!')
 }
-user.name = 'ashish shukla';
-user.age = 25;
-delete user.address;
-// console.log(user)
+else{
+    console.log(name + ' is not eligibe to vote!!')
 
-// array of objects
-// let arr = [{},{},{},{}]
-
-
-let users = [
-    {name: 'ashish', email: 'ashish@gmail.com'},
-    {name: 'ayush', email: 'ayush@gmail.com'},
-    {name: 'yash', email: 'yash@gmail.com'},
-    {name: 'himanshu', email: 'himanshu@gmail.com'},
-    {name: 'karan', email: 'karan@gmail.com'},
-    {name: 'arpit', email: 'arpit@gmail.com'},
-    {name: 'bhavna', email: 'bhavna@gmail.com'},
-    {name: 'kunal', email: 'kunal@gmail.com'},
-]
-// Math.floor is used to remove the decimal values
-// Math.random() is used to genereate the random values
-
-let randomUser = Math.floor(Math.random()*users.length) 
-console.log(users[randomUser].name, users[randomUser].email)
-
-
-
-
-
-
-users.push({name: 'aarti', email: 'aarti@gmail.com'},)
-users[0].name = 'ashish shukla'
-users[0].age = 25
-users.splice(2,1);
-// console.log(users[randomUser]);
-// console.log(users.length)
+}
+}
+else{
+    console.log('Enter the correct age')
+}
