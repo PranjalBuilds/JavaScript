@@ -1,45 +1,62 @@
-let api = 'https://www.omdbapi.com/?apikey=61e576a4&t='
+let todos = []
+let addTaskContainer = document.getElementById('add-task');
+let todosContainer = document.getElementById('todos-container')
+addTaskContainer.classList.add('d-none');
 
-let title = document.getElementById('title');
-let date = document.getElementById('date');
-let director = document.getElementById('director');
-let actors = document.getElementById('actors');
-let genre = document.getElementById('genre');
-let desc = document.getElementById('desc');
-let collection = document.getElementById('collection');
-let awards = document.getElementById('awards');
-let writer = document.getElementById('writer');
-let ratings = document.getElementById('ratings');
-let img = document.getElementById('img');
+function checkIfCompleted(e){
+    console.log(e)
 
+}
+function taskCompleted(e){
+    console.log(e)
+}
 
 
-let container = document.getElementById('container');
-let loader = document.getElementById('animation-loader')
-container.classList.add('d-none')
-loader.classList.add('d-none')
+function renderTodos() {
+    todosContainer.innerHTML = ''
+    todos.map((todo) => {
+        let card = document.createElement('div');
+        card.addEventListener('click', taskCompleted)
+        card.classList.add('card');
+        let cardFlex = document.createElement('div');
+        cardFlex.classList.add('card-flex');
+        let checkbox = document.createElement('input');
+        checkbox.type = 'checkbox';
+        checkbox.classList.add('checkbox')
+        checkbox.addEventListener('click', checkIfCompleted)
+        let taskEdit = document.createElement('input');
+        taskEdit.classList.add('task-edit');
+        taskEdit.value = todo.task;
+        let dueDate = document.createElement('div');
+        dueDate.classList.add('dueDate');
+        const date = new Date(todo.dueDate);
+        const options = { weekday: 'long', month: 'long', day: 'numeric' };
+        const fDate = date.toLocaleDateString('en', options)
+        dueDate.innerText = fDate;
 
-
-
-function searchMovie() {
-    loader.classList.remove('d-none')
-    let movieName = document.getElementById('movieName');
-    let query = api + movieName.value;
-    fetch(query).then((data) => {
-        return data.json()
-    }).then((data) => {
-        loader.classList.add('d-none')
-        container.classList.remove('d-none');
-        title.innerText = data.Title;
-        date.innerText = data.Released;
-        director.innerText = data.Director;
-        actors.innerText = data.Actors;
-        genre.innerText = data.Genre;
-        desc.innerText = data.Plot;
-        collection.innerText = data.BoxOffice;
-        awards.innerText = data.Awards;
-        ratings.innerText = data.imdbRating;
-        writer.innerText = data.Writer;
-        img.src = data.Poster;
+        todosContainer.appendChild(card);
+        card.appendChild(cardFlex);
+        cardFlex.appendChild(checkbox);
+        cardFlex.appendChild(taskEdit)
+        card.appendChild(dueDate)
     })
+
+}
+
+
+addTask = () => {
+    let taskInput = document.getElementById('taskInput');
+    let dateInput = document.getElementById('dateInput');
+
+    let temptodo = {
+        task: taskInput.value,
+        dueDate: dateInput.value,
+    }
+    todos.push(temptodo)
+    renderTodos();
+    addTaskContainer.classList.add('d-none')
+    console.log(todos)
+}
+displayAddTask = () => {
+    addTaskContainer.classList.remove('d-none')
 }
