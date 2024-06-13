@@ -1,62 +1,73 @@
-let todos = []
-let addTaskContainer = document.getElementById('add-task');
-let todosContainer = document.getElementById('todos-container')
-addTaskContainer.classList.add('d-none');
+//let btn = document.getElementById('btn');
 
-function checkIfCompleted(e){
-    console.log(e)
+// using click eventlisener
 
-}
-function taskCompleted(e){
-    console.log(e)
-}
+// btn.addEventListener('click', () => {
+//   console.log('clicked');
+// })          
 
+// get all info about the button
 
-function renderTodos() {
-    todosContainer.innerHTML = ''
-    todos.map((todo) => {
-        let card = document.createElement('div');
-        card.addEventListener('click', taskCompleted)
-        card.classList.add('card');
-        let cardFlex = document.createElement('div');
-        cardFlex.classList.add('card-flex');
-        let checkbox = document.createElement('input');
-        checkbox.type = 'checkbox';
-        checkbox.classList.add('checkbox')
-        checkbox.addEventListener('click', checkIfCompleted)
-        let taskEdit = document.createElement('input');
-        taskEdit.classList.add('task-edit');
-        taskEdit.value = todo.task;
-        let dueDate = document.createElement('div');
-        dueDate.classList.add('dueDate');
-        const date = new Date(todo.dueDate);
-        const options = { weekday: 'long', month: 'long', day: 'numeric' };
-        const fDate = date.toLocaleDateString('en', options)
-        dueDate.innerText = fDate;
+// btn.addEventListener('click', (event) => {
+//   console.log(event);
+// })
 
-        todosContainer.appendChild(card);
-        card.appendChild(cardFlex);
-        cardFlex.appendChild(checkbox);
-        cardFlex.appendChild(taskEdit)
-        card.appendChild(dueDate)
-    })
+// get the btn element (HTML)
 
-}
+// btn.addEventListener('click', (event) => {
+//   console.log(event.target);
+// })
 
 
-addTask = () => {
-    let taskInput = document.getElementById('taskInput');
-    let dateInput = document.getElementById('dateInput');
+// get the btn element text
 
-    let temptodo = {
-        task: taskInput.value,
-        dueDate: dateInput.value,
-    }
-    todos.push(temptodo)
-    renderTodos();
-    addTaskContainer.classList.add('d-none')
-    console.log(todos)
-}
-displayAddTask = () => {
-    addTaskContainer.classList.remove('d-none')
-}
+// btn.addEventListener('click', (event) => {
+//   console.log(event.target.innerText);
+// })
+
+// made a function to handle the click event
+
+
+// clickHandler = (event) => {
+//   console.log(event);
+// }
+
+// btn.addEventListener('click' , clickHandler)
+
+// querySelector :  you can target ids and classes both using querySelector.
+
+// let btn = document.querySelector('.btn')
+let btns = document.querySelectorAll('.btn');
+
+// btns.addEventListener('click', (e) => {
+//   console.log(e.target.innerText + " was clicked");
+// });
+
+// mouse events : click, mouseover, mouseout, mousedown, mouseup, mousemove, mouseenter, mouseleave, keyup, keydown, keypress, etc...
+
+//On mouse click
+
+// btns.forEach((btn) => {
+//   btn.addEventListener('click', (e) => {
+//     console.log(e.target.innerText + " was clicked");
+//   })
+// })
+
+//On mouse over
+
+btns.forEach((btn) => {
+  btn.addEventListener('mouseover', (e) => {
+    console.log(e.target.innerText + " was hovered");
+  })
+})
+
+let nameInput = document.getElementById('name')
+
+nameInput.addEventListener('keyup', (e)=>{
+    console.log(e.key)
+})
+
+
+nameInput.addEventListener('click', ()=>{
+    console.log('user is now entering the text')
+})
