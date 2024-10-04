@@ -5,18 +5,26 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Event Listeners</title>
+  <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="style.css">
   <link rel="icon" type="image/x-icon" href="https://static-00.iconduck.com/assets.00/javascript-js-icon-2048x2048-nyxvtvk0.png">
 </head>
-<body>
+<body class="bg-black">
     <!-- <button id="btn" >Button 1</button> -->
     
-    <button class="btn" >Button 1</button>
-    <button class="btn" >Button 2</button>
-    <button class="btn" >Button 3</button>
-      <hr/>
-    <input type="text" id="name">
+    <button class="btn mt-4 ms-2" id="btn" onclick="toCheckInnerHTML()">Button 1</button>
+    <button class="btn" id="btn1" onclick="toCheckTextContent()">Button 2</button>
+    <button class="btn" id="btn2" >Button 3</button> 
+     <hr class="mt-4"/> 
+    <p id="para" class="text-white mt-2 ms-4" onclick="toCheckQuerySelector()">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Praesentium, veritatis.</p> <br>
+    <!-- <input type="text" id="name"> -->
+    
+    <h1 class="text-white m-4 text-3xl">Say Hello to Js</h1>    
   
-  <script src="app.js"></script>
+    <button id="start" class="btn text-2xl ms-2 bg-green-600" onclick="start()">Start</button>
+    <button id="stop" class="btn text-2xl ms-2 bg-red-600" onclick="stop()">Stop</button>
+    <h1 id="msg" class="text-white text-2xl m-4"></h1>  
+  <script src="Async.js"></script>
+ 
 </body>
 </html>
